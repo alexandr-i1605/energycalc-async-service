@@ -1,1 +1,0 @@
-# energycalc-async-service

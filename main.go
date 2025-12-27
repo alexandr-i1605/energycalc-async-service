@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"math/rand"
 	"net/http"
 	"time"
 
@@ -54,11 +53,8 @@ func calculateResult(data RequestData) int {
 	residentsEffect := float64(data.Residents-1) * 0.3 * baseConsumption
 
 	totalConsumption := baseConsumption + temperatureEffect + residentsEffect
-
-	rand.Seed(time.Now().UnixNano())
-	randomFactor := 0.9 + rand.Float64()*0.2
 	
-	return int(totalConsumption * randomFactor)
+	return int(totalConsumption)
 }
 
 func sendResult(requestID int, result int) error {
